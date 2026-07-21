@@ -27,6 +27,18 @@
   --accent:    var(--orange);
   --accent-ink:#e0631c;
 
+  /* kente-style woven border band (softer palette) */
+  --kente-band:
+    repeating-linear-gradient(90deg,
+      var(--orange) 0 6px, var(--blue) 6px 12px, var(--teal) 12px 18px,
+      var(--lilac) 18px 24px, var(--orange) 24px 30px, var(--blue) 30px 36px);
+
+  /* woven cloth texture (subtle warp/weft crosshatch) */
+  --weave:
+    repeating-linear-gradient(90deg, rgba(32,29,51,0.028) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(0deg, rgba(32,29,51,0.022) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.20) 0 1px, transparent 1px 8px);
+
   --display: 'Inter', sans-serif;
   --serif:   'Instrument Serif', Georgia, serif;
   --sans:    'Spline Sans', system-ui, sans-serif;
@@ -36,12 +48,9 @@
   --gut: clamp(22px, 5vw, 72px);
 
   --ribbon:
-    repeating-linear-gradient(90deg,
-      transparent 0 170px,
-      var(--orange) 170px 176px,
-      var(--blue) 176px 182px,
-      var(--orange) 182px 188px,
-      transparent 188px 380px);
+    repeating-linear-gradient(90deg, transparent 0 316px, var(--orange) 316px 320px, transparent 320px 632px),
+    repeating-linear-gradient(90deg, transparent 0 150px, var(--blue) 150px 154px, transparent 154px 470px),
+    repeating-linear-gradient(90deg, transparent 0 540px, var(--orange) 540px 543px, transparent 543px 880px);
 }
 
 html[data-theme="dark"] {
@@ -62,6 +71,8 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0; font-family: var(--sans); color: var(--ink);
   background-color: var(--ivory);
+  background-image: var(--weave);
+  background-size: 4px 4px, 4px 4px, 8px 8px;
   line-height: 1.55; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -87,7 +98,7 @@ h1, h2, h3 { margin: 0; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 
 /* ---------- nav ---------- */
-.nav { position: sticky; top: 0; z-index: 60; background: var(--ivory); border-bottom: 1px solid var(--hair); }
+.nav { position: sticky; top: 0; z-index: 60; background: var(--ivory); border-bottom: 4px solid; border-image: var(--kente-band) 1; }
 .nav-in { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; font-size: 18px; color: var(--ink); }
 .brand .spark { width: 25px; height: 25px; cursor: pointer; }
@@ -110,7 +121,7 @@ html[data-theme="dark"] .theme-btn .moon { box-shadow: none; transform: scale(0.
   mask-image: linear-gradient(180deg, transparent, #000 30%, #000 78%, transparent);
 }
 .hero .wrap { position: relative; z-index: 2; }
-.hero-top { display: grid; grid-template-columns: auto 1fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
+.hero-top { display: grid; grid-template-columns: 1fr auto; gap: clamp(28px, 5vw, 70px); align-items: center; }
 .hero-photo {
   width: clamp(220px, 30vw, 420px); aspect-ratio: 4/5; flex: none; position: relative;
   -webkit-mask-image: radial-gradient(ellipse 68% 62% at 50% 45%, #000 55%, transparent 100%);
@@ -124,14 +135,14 @@ html[data-theme="dark"] .hero-photo img { mix-blend-mode: normal; }
 .hero .intro { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-top: clamp(30px, 4vw, 50px); flex-wrap: wrap; }
 .hero .lead { font-size: clamp(17px, 2vw, 21px); color: var(--ink-2); max-width: 44ch; margin: 0; }
 .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
-@media (max-width: 680px) { .hero-top { grid-template-columns: 1fr; } .hero-photo { width: clamp(200px, 62vw, 300px); } }
+@media (max-width: 680px) { .hero-top { grid-template-columns: 1fr; } .hero-photo { width: clamp(200px, 62vw, 300px); order: -1; } }
 
 .btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 22px; border-radius: 3px; text-decoration: none; cursor: pointer; border: 1.5px solid var(--ink); background: var(--surface); color: var(--ink); display: inline-flex; align-items: center; gap: 9px; transition: all 0.2s; }
 .btn:hover { background: var(--orange); color: #fff; border-color: var(--orange); }
 .btn.solid { background: var(--indigo); color: #fff; border-color: var(--indigo); }
 .btn.solid:hover { background: var(--orange); border-color: var(--orange); }
 
-.seam { height: 1px; background: var(--hair); }
+.seam { height: 10px; background-image: var(--kente-band); background-size: 216px 100%; box-shadow: 0 1px 0 rgba(0,0,0,0.12), 0 -1px 0 rgba(0,0,0,0.12); }
 
 section { padding: clamp(64px, 10vw, 140px) 0; }
 .sec-head { display: flex; align-items: baseline; gap: 22px; margin-bottom: clamp(36px, 5vw, 64px); flex-wrap: wrap; }
@@ -148,7 +159,7 @@ section { padding: clamp(64px, 10vw, 140px) 0; }
   transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s;
 }
 .proj:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -24px rgba(32,29,51,0.35); }
-.proj::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); }
+.proj::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 7px; background-image: var(--kente-band); background-size: 168px 100%; }
 .proj .num { font-family: var(--serif); font-style: italic; font-size: clamp(30px, 4vw, 44px); color: var(--accent); }
 .proj-meta { display: flex; gap: 10px; align-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
 .proj h3 { font-family: var(--display); font-weight: 800; font-size: clamp(38px, 6vw, 74px); letter-spacing: -0.045em; margin: 14px 0 12px; }
@@ -163,12 +174,12 @@ section { padding: clamp(64px, 10vw, 140px) 0; }
 .ph .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); background: color-mix(in srgb, var(--surface) 85%, transparent); padding: 6px 12px; border-radius: 3px; border: 1px solid var(--hair); }
 
 .stats { display: flex; flex-wrap: wrap; gap: clamp(14px, 2vw, 24px); }
-.stat { flex: 1 1 180px; border: 1px solid var(--hair); border-radius: 4px; padding: 22px 24px; background-color: var(--surface); border-left: 4px solid var(--stat-c, var(--orange)); }
+.stat { flex: 1 1 180px; border: 1px solid var(--hair); border-radius: 4px; padding: 22px 24px; background-color: var(--surface); border-left: 6px solid; border-image: var(--kente-band) 1; }
 .stat .n { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.04em; color: var(--stat-c, var(--ink)); }
 .stat .l { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-top: 8px; }
 
-.about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(34px, 6vw, 90px); align-items: start; }
-.portrait-frame { position: sticky; top: 100px; border: 1px solid var(--hair); border-radius: 4px; padding: 16px; background-color: var(--surface); }
+.about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(34px, 6vw, 90px); align-items: start; }
+.portrait-frame { position: sticky; top: 100px; border: 6px solid; border-image: var(--kente-band) 1; border-radius: 4px; padding: 16px; background-color: var(--surface); }
 .portrait-frame .pframe { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 2px; }
 .portrait-frame .pframe img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .portrait-frame .pcap { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-top: 14px; }
@@ -190,7 +201,7 @@ section { padding: clamp(64px, 10vw, 140px) 0; }
 @media (max-width: 680px) { .xp-row { grid-template-columns: 1fr; gap: 6px; } .xp-row .place { text-align: left; } }
 
 .triptych { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.otc { border: 1px solid var(--hair); border-top: 3px solid var(--accent); border-radius: 4px; padding: clamp(24px, 2.8vw, 32px); display: flex; flex-direction: column; min-height: 300px; background-color: var(--surface); }
+.otc { border: 1px solid var(--hair); border-top: 7px solid; border-image: var(--kente-band) 1; border-radius: 4px; padding: clamp(24px, 2.8vw, 32px); display: flex; flex-direction: column; min-height: 300px; background-color: var(--surface); }
 .otc .otc-kick { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); display: flex; align-items: center; gap: 8px; }
 .otc h3 { font-family: var(--display); font-weight: 800; font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.035em; margin: 14px 0 12px; }
 .otc h3 .serif-it { color: var(--accent); }
@@ -205,7 +216,7 @@ section { padding: clamp(64px, 10vw, 140px) 0; }
 .contact h2 a:hover { color: var(--orange); }
 .contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 48px; }
 
-.foot { background: var(--indigo); color: rgba(255,255,255,0.7); padding: 40px 0; border-top: 3px solid var(--orange); }
+.foot { background: var(--indigo); color: rgba(255,255,255,0.7); padding: 40px 0; border-top: 6px solid; border-image: var(--kente-band) 1; }
 .foot-in { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
 .foot-in .top { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: rgba(255,255,255,0.7); }
 </style>
@@ -269,7 +280,6 @@ section { padding: clamp(64px, 10vw, 140px) 0; }
 <section class="hero" data-screen-label="Hero">
   <div class="wrap">
     <div class="hero-top">
-      <div class="hero-photo reveal" data-d="1"><img src="portrait.jpg" alt="Portrait of Gigi Hsu" /></div>
       <div>
         <div class="hero-tag reveal">
           <span class="diamond or"></span><span class="diamond bl"></span><span class="diamond tl"></span>
@@ -277,6 +287,7 @@ section { padding: clamp(64px, 10vw, 140px) 0; }
         </div>
         <h1 class="reveal" data-d="1">Hi, I'm Gigi — I live at the intersection of <span class="c1 serif-it">Product</span>, <span class="c2 serif-it">Data</span> &amp; AI.</h1>
       </div>
+      <div class="hero-photo reveal" data-d="1"><img src="portrait.jpg" alt="Portrait of Gigi Hsu" /></div>
     </div>
     <div class="intro">
       <p class="lead reveal" data-d="2">I build products and systems that turn messy, high-stakes problems into decisions people can act on — across AI, fintech, and beyond.</p>
@@ -328,15 +339,15 @@ section { padding: clamp(64px, 10vw, 140px) 0; }
       <p class="kick"><span class="diamond bl"></span>The short version</p>
     </div>
     <div class="about-grid">
-      <div class="portrait-frame reveal">
-        <div class="pframe"><img src="portrait.jpg" alt="Portrait of Gigi Hsu" /></div>
-        <div class="pcap"><span class="diamond or"></span>New Haven, CT</div>
-      </div>
       <div class="about-body">
         <p class="reveal">I work where <span class="hl">data, product, and AI</span> meet — turning messy, high-stakes problems into systems people can trust. I recently earned my MBA from the Yale School of Management, where I co-led the Yale AI Association.</p>
         <p class="muted reveal" data-d="1">Before Yale, I spent roughly eight years as a data scientist and product manager — building fraud and anti-money-laundering systems at J.P. Morgan (formerly First Republic), forecasting demand at Apple, and automating audits at PwC. I lead from the <span class="hl p">problem, not the feature.</span></p>
         <p class="muted reveal" data-d="2">Off the clock, I've led Yale's largest AI conference, invested in early-stage fintech, and helped launch a rural health clinic serving <span class="hl b">2,000+ residents</span> in Togo.</p>
         <div class="sig reveal" data-d="2">— geeg</div>
+      </div>
+      <div class="portrait-frame reveal">
+        <div class="pframe"><img src="portrait.jpg" alt="Portrait of Gigi Hsu" /></div>
+        <div class="pcap"><span class="diamond or"></span>New Haven, CT</div>
       </div>
     </div>
   </div>
