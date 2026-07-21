@@ -47,11 +47,11 @@
   --maxw: 1220px;
   --gut: clamp(22px, 5vw, 72px);
 
-  /* stripe = orange|blue|orange triad; triads spaced out + irregular via 3 layers */
+  /* stripe = orange|blue|orange triad; only 2-3 triads per page, spaced far apart + irregular */
   --ribbon:
-    repeating-linear-gradient(90deg, transparent 0 120px, var(--orange) 120px 124px, var(--blue) 124px 128px, var(--orange) 128px 132px, transparent 132px 640px),
-    repeating-linear-gradient(90deg, transparent 0 400px, var(--orange) 400px 404px, var(--blue) 404px 408px, var(--orange) 408px 412px, transparent 412px 760px),
-    repeating-linear-gradient(90deg, transparent 0 600px, var(--orange) 600px 604px, var(--blue) 604px 608px, var(--orange) 608px 612px, transparent 612px 900px);
+    repeating-linear-gradient(90deg, transparent 0 180px, var(--orange) 180px 184px, var(--blue) 184px 188px, var(--orange) 188px 192px, transparent 192px 1560px),
+    repeating-linear-gradient(90deg, transparent 0 560px, var(--orange) 560px 564px, var(--blue) 564px 568px, var(--orange) 568px 572px, transparent 572px 1560px),
+    repeating-linear-gradient(90deg, transparent 0 1230px, var(--orange) 1230px 1234px, var(--blue) 1234px 1238px, var(--orange) 1238px 1242px, transparent 1242px 1560px);
 }
 
 html[data-theme="dark"] {
