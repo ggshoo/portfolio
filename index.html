@@ -127,7 +127,9 @@ html[data-theme="dark"] .theme-btn .moon { box-shadow: none; transform: scale(0.
 .hero-photo {
   width: clamp(220px, 30vw, 420px); flex: none; position: relative;
 }
-.hero-photo img { width: 100%; height: auto; display: block; filter: drop-shadow(0 18px 30px rgba(32,29,51,0.14)); }
+.hero-photo img { width: 100%; height: auto; display: block;
+  -webkit-mask-image: linear-gradient(180deg, #000 68%, transparent 99%);
+  mask-image: linear-gradient(180deg, #000 68%, transparent 99%); }
 .hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(38px, 6vw, 82px); line-height: 1.02; letter-spacing: -0.045em; max-width: 17ch; text-wrap: balance; }
 .hero h1 .c1 { color: var(--blue); }
 .hero h1 .c2 { color: var(--orange); }
@@ -180,7 +182,9 @@ section { padding: clamp(64px, 10vw, 140px) 0; }
 .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(34px, 6vw, 90px); align-items: start; }
 .portrait-frame { position: sticky; top: 100px; border: 6px solid; border-image: var(--kente-band) 1; border-radius: 4px; padding: 16px; background-color: var(--surface); }
 .portrait-frame .pframe { border-radius: 2px; }
-.portrait-frame .pframe img { width: 100%; height: auto; display: block; }
+.portrait-frame .pframe img { width: 100%; height: auto; display: block;
+  -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 82%, transparent 100%); }
 .portrait-frame .pcap { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-top: 14px; }
 .about-body p { font-size: clamp(18px, 2.2vw, 23px); line-height: 1.55; margin: 0 0 26px; max-width: 50ch; }
 .about-body p.muted { color: var(--ink-2); font-size: clamp(16px, 1.9vw, 19px); }
@@ -284,12 +288,12 @@ section { padding: clamp(64px, 10vw, 140px) 0; }
           <span class="diamond or"></span><span class="diamond bl"></span><span class="diamond tl"></span>
           <span class="kick">Yale SOM MBA · New Haven, CT</span>
         </div>
-        <h1 class="reveal" data-d="1">Hi, I'm Gigi — I live at the intersection of <span class="c1 serif-it">Product</span>, <span class="c2 serif-it">Data</span> &amp; AI.</h1>
+        <h1 class="reveal" data-d="1">Gigi <span class="c2">Hsu</span>.</h1>
       </div>
       <div class="hero-photo reveal" data-d="1"><img src="portrait.png" alt="Portrait of Gigi Hsu" /></div>
     </div>
     <div class="intro">
-      <p class="lead reveal" data-d="2">I build products and systems that turn messy, high-stakes problems into decisions people can act on — across AI, fintech, and beyond.</p>
+      <p class="lead reveal" data-d="2" style="font-size:clamp(22px,3vw,34px);"><span class="serif-it" style="color:var(--blue)">Product</span>, <span class="serif-it" style="color:var(--orange)">Data</span>, and AI.</p>
       <div class="hero-cta reveal" data-d="3">
         <a class="btn solid" href="#work">View work →</a>
         <a class="btn" href="#contact">Say hi</a>
