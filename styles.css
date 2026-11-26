@@ -33,7 +33,7 @@ a{color:inherit}
 .nav-top a{font-size:12px;text-decoration:none}
 .iconbtn{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--hair);border-radius:6px;cursor:pointer;color:var(--ink)}
 .nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.nav li a{display:flex;align-items:center;justify-content:space-between;font-size:22px;letter-spacing:-.01em;text-decoration:none;padding:10px 14px;border-radius:6px}
+.nav li a{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:20px;letter-spacing:-.01em;text-decoration:none;padding:10px 14px;border-radius:6px}
 .nav li a .g{background:linear-gradient(90deg,#111 0%,#9a9a9a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;transition:opacity .2s}
 .nav li a:hover .g{opacity:.6}
 .nav li a[aria-current]{background:#111;color:#fff;font-weight:500;box-shadow:0 0 0 4px rgba(17,17,17,.08),0 10px 30px -10px rgba(17,17,17,.6)}
