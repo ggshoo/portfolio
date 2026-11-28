@@ -144,3 +144,6 @@ a{color:inherit}
 .stat.has-photo:hover .big,.stat.has-photo:hover .what,.stat.has-photo:hover .role{color:#fff}
 .stat.has-photo:hover .where{color:#e6eef1}
 .stat.has-photo::before{z-index:2}
+.stat .credit{position:absolute;right:12px;bottom:8px;z-index:1;font-family:'Inter Tight',sans-serif;font-size:10px;color:rgba(255,255,255,.75);opacity:0;transition:opacity .6s ease}
+.stat .credit a{color:inherit}
+.stat.has-photo:hover .credit{opacity:1}
