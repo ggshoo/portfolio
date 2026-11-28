@@ -114,3 +114,23 @@ a{color:inherit}
 .item .ti{font-size:28px;line-height:1.2;letter-spacing:-.02em}
 .item .su{font-size:15px;line-height:1.55;color:var(--ink-2)}
 .item .src{font-size:12px}
+
+/* crystal card: storybook scene on hover (colors from crystal's lib/scene.ts) */
+.proj.crystal{position:relative;isolation:isolate;
+--s1:#BFE8DA;--s2:#F4E3A6;--s3:#F0C978;--h1:#6FA050;--h2:#5C8C48;--h3:#4F7A3D;--orb:#FFF0B8;--glow:#F4D06A;--ox:80%;--oy:20%;--sink:#2E2416;--ssub:#6B5B44}
+.proj.crystal>*{position:relative;z-index:1;transition:color .5s ease}
+.proj.crystal .scene{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .6s ease;background:linear-gradient(180deg,var(--s1),var(--s2) 55%,var(--s3));pointer-events:none}
+.proj.crystal .orb{position:absolute;left:var(--ox);top:var(--oy);width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--orb);box-shadow:0 0 0 10px color-mix(in srgb,var(--glow) 35%,transparent),0 0 40px 18px color-mix(in srgb,var(--glow) 55%,transparent)}
+.proj.crystal .hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:42%}
+.proj.crystal:hover,.proj.crystal:focus-visible{border-color:transparent}
+.proj.crystal:hover .scene,.proj.crystal:focus-visible .scene{opacity:1}
+.proj.crystal:hover .n,.proj.crystal:hover .d{color:var(--ssub)}
+.proj.crystal:hover .t{color:var(--sink)}
+.proj.crystal .go{align-self:flex-start;padding:8px 14px;margin-left:-14px;border-radius:999px;transition:background .5s ease,color .5s ease}
+.proj.crystal:hover .go{background:#FFF6E3;color:#2E2416;margin-left:0}
+.proj.crystal::before{z-index:2}
+
+/* placeholder project cards */
+.proj.soon{border-style:dashed;cursor:default}
+.proj.soon:hover{transform:none;box-shadow:none}
+.proj.soon .go{color:var(--ink-3)}
