@@ -147,3 +147,8 @@ a{color:inherit}
 .stat .credit{position:absolute;right:12px;bottom:8px;z-index:1;font-family:'Inter Tight',sans-serif;font-size:10px;color:rgba(255,255,255,.75);opacity:0;transition:opacity .6s ease}
 .stat .credit a{color:inherit}
 .stat.has-photo:hover .credit{opacity:1}
+/* logo variant: logo sits at its real size on white, text stays dark */
+.stat.logo .ph{background-color:#fff;background-size:110px auto;background-repeat:no-repeat;background-position:right 24px center}
+.stat.logo .ph::after{display:none}
+.stat.has-photo.logo:hover .big,.stat.has-photo.logo:hover .what{color:#16262c}
+.stat.has-photo.logo:hover .where{color:#4c5f66}
